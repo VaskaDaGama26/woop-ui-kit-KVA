@@ -1,0 +1,9 @@
+@import "./fonts.css";
+
+:root {
+  --font-family-primary: "Mulish";
+}
+
+* {
+  font-family: var(--font-family-primary);
+}
