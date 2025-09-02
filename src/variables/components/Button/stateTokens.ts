@@ -1,30 +1,86 @@
-import type { ButtonState } from "../../../components/types";
+import type {
+  ButtonState,
+  ButtonType,
+} from "../../../components/types";
 import color from "../../atomic/color";
 import effect from "../../atomic/effect";
 
 export const stateTokens: Record<
-  ButtonState,
-  { bg: string; color: string; boxShadow?: string }
+  ButtonType,
+  Record<
+    ButtonState,
+    { bg: string; color: string; boxShadow?: string; border?: string }
+  >
 > = {
-  default: {
-    bg: color.accent.violet.primary.light,
-    color: color.grayScale.white,
+  primary: {
+    default: {
+      bg: color.accent.violet.primary.light,
+      color: color.grayScale.white,
+    },
+    hover: {
+      bg: color.accent.violet.hover.light,
+      color: color.grayScale.white,
+    },
+    click: {
+      bg: color.accent.violet.click.light,
+      color: color.grayScale.white,
+    },
+    focus: {
+      bg: color.accent.violet.primary.light,
+      color: color.grayScale.white,
+      boxShadow: effect.state.focusBtn,
+    },
+    disabled: {
+      bg: color.backgroundColor.disabled.light,
+      color: color.grayScale.text.disabled.light,
+    },
   },
-  hover: {
-    bg: color.accent.violet.hover.light,
-    color: color.grayScale.white,
+  secondary: {
+    default: {
+      bg: color.accent.violet.quaternary.light,
+      color: color.accent.violet.primary.light,
+    },
+    hover: {
+      bg: color.accent.violet.hover.light,
+      color: color.grayScale.white,
+    },
+    click: {
+      bg: color.accent.violet.click.light,
+      color: color.grayScale.white,
+    },
+    focus: {
+      bg: color.accent.violet.quaternary.light,
+      color: color.accent.violet.primary.light,
+      boxShadow: effect.state.focusBtn,
+    },
+    disabled: {
+      bg: color.backgroundColor.disabled.light,
+      color: color.grayScale.text.disabled.light,
+    },
   },
-  click: {
-    bg: color.accent.violet.click.light,
-    color: color.grayScale.white,
-  },
-  focus: {
-    bg: color.accent.violet.primary.light,
-    color: color.grayScale.white,
-    boxShadow: effect.state.focusBtn,
-  },
-  disabled: {
-    bg: color.backgroundColor.disabled.light,
-    color: color.grayScale.text.disabled.light,
+  tertiary: {
+    default: {
+      bg: "none",
+      color: color.accent.violet.primary.light,
+    },
+    hover: {
+      bg: "none",
+      color: color.accent.violet.hover.light,
+      boxShadow: effect.dropShadow.Z100.light,
+    },
+    click: {
+      bg: "none",
+      color: color.accent.violet.click.light,
+      boxShadow: effect.dropShadow.Z100.light,
+    },
+    focus: {
+      bg: "none",
+      color: color.accent.violet.click.light,
+      border: `1px solid ${color.accent.orange.primary.light}`,
+    },
+    disabled: {
+      bg: "none",
+      color: color.grayScale.text.disabled.light,
+    },
   },
 };

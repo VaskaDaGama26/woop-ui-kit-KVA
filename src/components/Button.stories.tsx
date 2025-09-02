@@ -1,5 +1,10 @@
 import Button from "./Button";
 import "../styles/globals.css";
+import type { ButtonSize, ButtonLayout, ButtonState } from "./types";
+
+const sizes = ["S", "M", "L"];
+const layouts = ["primary", "secondary", "tertiary"];
+const states = ["default", "hover", "click", "focus", "disabled"];
 
 export default {
   title: "Design System/Molecules/Button",
@@ -8,67 +13,47 @@ export default {
 };
 
 export const Default = {
-  storyName: "States/Default",
   args: {
-    size: "M",
     children: "Action",
-    state: "default",
-  },
-};
-export const Hovered = {
-  storyName: "States/Hovered",
-  args: {
-    size: "M",
-    children: "Action",
-    state: "hover",
-  },
-};
-export const Clicked = {
-  storyName: "States/Clicked",
-  args: {
-    size: "M",
-    children: "Action",
-    state: "click",
-  },
-};
-export const Focused = {
-  storyName: "States/Focused",
-  args: {
-    size: "M",
-    children: "Action",
-    state: "focus",
-  },
-};
-export const Disabled = {
-  storyName: "States/Disabled",
-  args: {
-    size: "M",
-    children: "Action",
-    state: "disabled",
   },
 };
 
-export const Small = {
-  storyName: "Sizes/Small",
-  args: {
-    size: "S",
-    children: "Action",
-    state: "default",
-  },
-};
-export const Medium = {
-  storyName: "Sizes/Medium",
-  args: {
-    size: "M",
-    children: "Action",
-    state: "default",
-  },
-};
-export const Large = {
-  storyName: "Sizes/Large",
-  args: {
-    size: "L",
-    children: "Action",
-    state: "default",
-  },
+export const AllButtons = () => {
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: `repeat(${sizes.length}, auto)`,
+        gap: "50px",
+      }}
+    >
+      {layouts.map((layout) =>
+        sizes.map((size) => (
+          <div key={`${layout}-${size}`}>
+            <strong>
+              {layout} / {size}
+            </strong>
+            <div
+              style={{
+                display: "flex",
+                gap: "10px",
+                marginTop: "5px",
+              }}
+            >
+              {states.map((state) => (
+                <Button
+                  size={size as ButtonSize}
+                  layout={layout as ButtonLayout}
+                  state={state as ButtonState}
+                  key={`${size}-${layout}-${state}`}
+                >
+                  Action
+                </Button>
+              ))}
+            </div>
+          </div>
+        ))
+      )}
+    </div>
+  );
 };

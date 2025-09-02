@@ -5,6 +5,7 @@ import type { ButtonProps } from "./types";
 const Button = ({
   size = "M",
   state = "default",
+  layout = "primary",
   children,
   ...props
 }: ButtonProps) => {
@@ -13,7 +14,12 @@ const Button = ({
   //   const [isFocused, setFocused] = useState(false);
   const { sizeTokens, stateTokens } = ButtonTokens;
   const { padding, typography } = sizeTokens[size];
-  const { bg, color: textColor, boxShadow } = stateTokens[state];
+  const {
+    bg,
+    color: textColor,
+    boxShadow,
+    border = 0,
+  } = stateTokens[layout][state];
 
   return (
     <button
@@ -26,9 +32,9 @@ const Button = ({
         background: bg,
         color: textColor,
         boxShadow,
+        border,
 
         borderRadius: borderRadius.base,
-        border: 0,
         transition: "all 0.2s ease",
 
         cursor: state === "disabled" ? "not-allowed" : "pointer",

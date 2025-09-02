@@ -5,10 +5,12 @@ export type ButtonState =
   | "click"
   | "focus"
   | "disabled";
+export type ButtonLayout = "primary" | "secondary" | "tertiary";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
   state?: ButtonState;
+  layout?: ButtonLayout;
   children: React.ReactNode;
 }
