@@ -1,3 +1,5 @@
+import Arrow from "../assets/icons/Button/Arrow";
+import Plus from "../assets/icons/Button/Plus";
 import { borderRadius } from "../variables/atomic/borderRadius";
 import ButtonTokens from "../variables/components/Button/index";
 import type { ButtonProps } from "./types";
@@ -6,6 +8,7 @@ const Button = ({
   size = "M",
   state = "default",
   layout = "primary",
+  icon = "none",
   children,
   ...props
 }: ButtonProps) => {
@@ -13,7 +16,7 @@ const Button = ({
   //   const [isClicked, setClicked] = useState(false);
   //   const [isFocused, setFocused] = useState(false);
   const { sizeTokens, stateTokens } = ButtonTokens;
-  const { padding, typography } = sizeTokens[size];
+  const { padding, typography, icon: iconSize } = sizeTokens[size];
   const {
     bg,
     color: textColor,
@@ -37,6 +40,10 @@ const Button = ({
         borderRadius: borderRadius.base,
         transition: "all 0.2s ease",
 
+        display: "flex",
+        gap: "8px",
+        alignItems: "center",
+        justifyContent: "center",
         cursor: state === "disabled" ? "not-allowed" : "pointer",
       }}
       {...props}
@@ -49,7 +56,21 @@ const Button = ({
       //   onFocus={() => setFocused(true)}
       //   onBlur={() => setFocused(false)}
     >
+      {icon === "left" && (
+        <Plus
+          fillPath={textColor}
+          width={`${iconSize.width}`}
+          height={`${iconSize.height}`}
+        />
+      )}
       {children}
+      {icon === "right" && (
+        <Arrow
+          fillPath={textColor}
+          width={`${iconSize.width}`}
+          height={`${iconSize.height}`}
+        />
+      )}
     </button>
   );
 };

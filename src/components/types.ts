@@ -6,11 +6,13 @@ export type ButtonState =
   | "focus"
   | "disabled";
 export type ButtonLayout = "primary" | "secondary" | "tertiary";
+export type ButtonIcon = "left" | "none" | "right";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
   state?: ButtonState;
   layout?: ButtonLayout;
+  icon?: ButtonIcon;
   children: React.ReactNode;
 }

@@ -1,10 +1,16 @@
 import Button from "./Button";
 import "../styles/globals.css";
-import type { ButtonSize, ButtonLayout, ButtonState } from "./types";
+import type {
+  ButtonSize,
+  ButtonLayout,
+  ButtonState,
+  ButtonIcon,
+} from "./types";
 
 const sizes = ["S", "M", "L"];
 const layouts = ["primary", "secondary", "tertiary"];
 const states = ["default", "hover", "click", "focus", "disabled"];
+const icons = ["none", "left", "right"];
 
 export default {
   title: "Design System/Molecules/Button",
@@ -37,18 +43,30 @@ export const AllButtons = () => {
               style={{
                 display: "flex",
                 gap: "10px",
-                marginTop: "5px",
+                flexDirection: "column",
               }}
             >
-              {states.map((state) => (
-                <Button
-                  size={size as ButtonSize}
-                  layout={layout as ButtonLayout}
-                  state={state as ButtonState}
-                  key={`${size}-${layout}-${state}`}
+              {icons.map((icon) => (
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "10px",
+                    marginTop: "5px",
+                    justifyContent: "space-between",
+                  }}
                 >
-                  Action
-                </Button>
+                  {states.map((state) => (
+                    <Button
+                      size={size as ButtonSize}
+                      layout={layout as ButtonLayout}
+                      state={state as ButtonState}
+                      key={`${size}-${layout}-${state}`}
+                      icon={icon as ButtonIcon}
+                    >
+                      Action
+                    </Button>
+                  ))}
+                </div>
               ))}
             </div>
           </div>

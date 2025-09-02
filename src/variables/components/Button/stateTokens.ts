@@ -1,12 +1,12 @@
 import type {
   ButtonState,
-  ButtonType,
+  ButtonLayout,
 } from "../../../components/types";
 import color from "../../atomic/color";
 import effect from "../../atomic/effect";
 
 export const stateTokens: Record<
-  ButtonType,
+  ButtonLayout,
   Record<
     ButtonState,
     { bg: string; color: string; boxShadow?: string; border?: string }
