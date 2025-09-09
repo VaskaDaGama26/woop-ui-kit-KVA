@@ -1,16 +1,10 @@
-const Plus = ({
-  fillPath,
-  width,
-  height,
-}: {
-  fillPath: string;
-  width: string;
-  height: string;
-}) => {
+import type { IconProps } from "./types";
+
+const Plus = ({ fillPath, width, height }: IconProps) => {
   return (
     <svg
-      width={`${width}`}
-      height={`${height}`}
+      width={width}
+      height={height}
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -24,5 +18,4 @@ const Plus = ({
     </svg>
   );
 };
-
 export default Plus;

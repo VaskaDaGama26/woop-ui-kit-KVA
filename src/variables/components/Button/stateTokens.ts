@@ -1,7 +1,7 @@
 import type {
   ButtonState,
   ButtonLayout,
-} from "../../../components/types";
+} from "../../../components/Button/types";
 import color from "../../atomic/color";
 import effect from "../../atomic/effect";
 
@@ -14,6 +14,10 @@ export const stateTokens: Record<
 > = {
   primary: {
     default: {
+      bg: color.accent.violet.primary.light,
+      color: color.grayScale.white,
+    },
+    active: {
       bg: color.accent.violet.primary.light,
       color: color.grayScale.white,
     },
@@ -40,6 +44,10 @@ export const stateTokens: Record<
       bg: color.accent.violet.quaternary.light,
       color: color.accent.violet.primary.light,
     },
+    active: {
+      bg: color.accent.violet.quaternary.light,
+      color: color.accent.violet.primary.light,
+    },
     hover: {
       bg: color.accent.violet.hover.light,
       color: color.grayScale.white,
@@ -60,6 +68,10 @@ export const stateTokens: Record<
   },
   tertiary: {
     default: {
+      bg: "none",
+      color: color.accent.violet.primary.light,
+    },
+    active: {
       bg: "none",
       color: color.accent.violet.primary.light,
     },

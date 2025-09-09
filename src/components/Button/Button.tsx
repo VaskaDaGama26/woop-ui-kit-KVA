@@ -1,7 +1,7 @@
-import Arrow from "../assets/icons/Button/Arrow";
-import Plus from "../assets/icons/Button/Plus";
-import { borderRadius } from "../variables/atomic/borderRadius";
-import ButtonTokens from "../variables/components/Button/index";
+import Arrow from "../../assets/icons/Arrow";
+import Plus from "../../assets/icons/Plus";
+import { borderRadius } from "../../variables/atomic/borderRadius";
+import ButtonTokens from "../../variables/components/Button/index";
 import type { ButtonProps } from "./types";
 
 const Button = ({
@@ -9,14 +9,20 @@ const Button = ({
   state = "default",
   layout = "primary",
   icon = "none",
+  category = "standart",
+  customIcon: CustomIcon,
   children,
   ...props
 }: ButtonProps) => {
-  //   const [isHovered, setHovered] = useState(false);
-  //   const [isClicked, setClicked] = useState(false);
-  //   const [isFocused, setFocused] = useState(false);
-  const { sizeTokens, stateTokens } = ButtonTokens;
-  const { padding, typography, icon: iconSize } = sizeTokens[size];
+  const appliedIcon = category === "icon" ? "none" : icon;
+  const appliedChildren = category === "icon" ? undefined : children;
+
+  const { iconSizeTokens, standartSizeTokens, stateTokens } =
+    ButtonTokens;
+  const tokens =
+    category === "icon" ? iconSizeTokens : standartSizeTokens;
+  const { padding, typography, icon: iconSize } = tokens[size];
+
   const {
     bg,
     color: textColor,
@@ -27,19 +33,14 @@ const Button = ({
   return (
     <button
       style={{
-        // sizeTokens
         ...typography,
         padding,
-
-        // stateColors
         background: bg,
         color: textColor,
         boxShadow,
         border,
-
         borderRadius: borderRadius.base,
         transition: "all 0.2s ease",
-
         display: "flex",
         gap: "8px",
         alignItems: "center",
@@ -48,23 +49,24 @@ const Button = ({
       }}
       {...props}
       disabled={state === "disabled"}
-      // Events
-      //   onMouseEnter={() => setHovered(true)}
-      //   onMouseLeave={() => setHovered(false)}
-      //   onMouseDown={() => setClicked(true)}
-      //   onMouseUp={() => setClicked(false)}
-      //   onFocus={() => setFocused(true)}
-      //   onBlur={() => setFocused(false)}
     >
-      {icon === "left" && (
+      {appliedIcon === "left" && (
         <Plus
           fillPath={textColor}
           width={`${iconSize.width}`}
           height={`${iconSize.height}`}
         />
       )}
-      {children}
-      {icon === "right" && (
+      {category === "icon" && CustomIcon && (
+        <CustomIcon
+          fillIcon={state === "active" ? textColor : undefined}
+          fillPath={textColor}
+          width={`${iconSize.width}`}
+          height={`${iconSize.height}`}
+        />
+      )}
+      {appliedChildren}
+      {appliedIcon === "right" && (
         <Arrow
           fillPath={textColor}
           width={`${iconSize.width}`}

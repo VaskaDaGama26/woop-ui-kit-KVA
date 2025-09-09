@@ -1,7 +1,8 @@
-import { sizeTokens } from "./sizeTokens";
+import { standartSizeTokens, iconSizeTokens } from "./sizeTokens";
 import { stateTokens } from "./stateTokens";
 
 export default {
-  sizeTokens,
+  standartSizeTokens,
+  iconSizeTokens,
   stateTokens,
 };
