@@ -58,9 +58,16 @@ export const Default = (args: ButtonStoryArgs) => {
     ? iconityIcons[customIconName]
     : undefined;
 
-  return (
-    <Button children="Action" {...rest} customIcon={CustomIcon} />
-  );
+  return <Button {...rest} customIcon={CustomIcon} />;
+};
+
+Default.args = {
+  children: "Action",
+  size: "M",
+  layout: "primary",
+  state: "default",
+  icon: "none",
+  category: "standart",
 };
 
 export const AllButtons = () => (
@@ -95,27 +102,42 @@ export const AllButtons = () => (
                           display: "flex",
                           gap: "10px",
                           marginTop: "5px",
-                          justifyContent: "space-between",
+                          justifyContent:
+                            category === "icon"
+                              ? "flex-start"
+                              : "space-evenly",
                         }}
                         key={icon}
                       >
-                        {states.map((state) => (
-                          <Button
-                            size={size as ButtonSize}
-                            layout={layout as ButtonLayout}
-                            state={state as ButtonState}
-                            icon={icon as ButtonIcon}
-                            category={category as ButtonCategory}
-                            key={`${size}-${layout}-${state}-${icon}`}
-                            customIcon={
-                              category === "icon" ? Heart : undefined
+                        {states
+                          .filter((state) => {
+                            if (
+                              category === "standart" &&
+                              state === "active"
+                            ) {
+                              return false;
                             }
-                          >
-                            {category === "standart"
-                              ? "Action"
-                              : undefined}
-                          </Button>
-                        ))}
+                            return true;
+                          })
+                          .map((state) => (
+                            <Button
+                              size={size as ButtonSize}
+                              layout={layout as ButtonLayout}
+                              state={state as ButtonState}
+                              icon={icon as ButtonIcon}
+                              category={category as ButtonCategory}
+                              key={`${size}-${layout}-${state}-${icon}`}
+                              customIcon={
+                                category === "icon"
+                                  ? Heart
+                                  : undefined
+                              }
+                            >
+                              {category === "standart"
+                                ? "Action"
+                                : undefined}
+                            </Button>
+                          ))}
                       </div>
                     )
                   )}
