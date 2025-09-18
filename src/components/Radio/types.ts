@@ -6,7 +6,9 @@ export type RadioState =
   | "disabled";
 
 export interface RadioProps {
-  state?: RadioState;
   value: string;
   name: string;
+  state?: RadioState;
+  selectedValue: string | null;
+  onChange: (value: string) => void;
 }

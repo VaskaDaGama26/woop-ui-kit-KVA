@@ -1,8 +1,9 @@
 import type { IconProps } from "./types";
 
-const Minus = ({ fillPath, width, height }: IconProps) => {
+const Minus = ({ fillPath, width, height, ...props }: IconProps) => {
   return (
     <svg
+      {...props}
       width={width}
       height={height}
       viewBox="0 0 24 24"

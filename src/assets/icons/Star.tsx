@@ -1,8 +1,15 @@
 import type { IconProps } from "./types";
 
-const Star = ({ fillIcon, fillPath, width, height }: IconProps) => {
+const Star = ({
+  fillIcon,
+  fillPath,
+  width,
+  height,
+  ...props
+}: IconProps) => {
   return (
     <svg
+      {...props}
       width={width}
       height={height}
       viewBox="0 0 24 24"

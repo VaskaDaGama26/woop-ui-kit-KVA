@@ -5,9 +5,11 @@ const Delete = ({
   fillPath,
   width,
   height,
+  ...props
 }: IconProps) => {
   return (
     <svg
+      {...props}
       width={width}
       height={height}
       viewBox="0 0 24 24"

@@ -2,6 +2,7 @@ const Arrow = ({
   fillPath,
   width,
   height,
+  ...props
 }: {
   fillPath: string;
   width: string;
@@ -9,6 +10,7 @@ const Arrow = ({
 }) => {
   return (
     <svg
+      {...props}
       width={width}
       height={height}
       viewBox="0 0 24 24"

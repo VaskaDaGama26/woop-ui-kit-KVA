@@ -1,8 +1,9 @@
 import type { IconProps } from "./types";
 
-const Check = ({ fillPath, width, height }: IconProps) => {
+const Check = ({ fillPath, width, height, ...props }: IconProps) => {
   return (
     <svg
+      {...props}
       width={width}
       height={height}
       viewBox="0 0 24 24"

@@ -1,8 +1,9 @@
 import type { IconProps } from "./types";
 
-const Close = ({ fillPath, width, height }: IconProps) => {
+const Close = ({ fillPath, width, height, ...props }: IconProps) => {
   return (
     <svg
+      {...props}
       width={width}
       height={height}
       viewBox="0 0 24 24"

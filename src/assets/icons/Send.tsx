@@ -1,8 +1,15 @@
 import type { IconProps } from "./types";
 
-const Send = ({ fillIcon, fillPath, width, height }: IconProps) => {
+const Send = ({
+  fillIcon,
+  fillPath,
+  width,
+  height,
+  ...props
+}: IconProps) => {
   return (
     <svg
+      {...props}
       width={width}
       height={height}
       viewBox="0 0 24 24"

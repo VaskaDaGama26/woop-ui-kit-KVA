@@ -66,7 +66,7 @@ export const stateTokens: Record<
   },
   disabled: {
     checked: {
-      bg: color.backgroundColor.disabled.light,
+      bg: color.grayScale.text.disabled.light,
       border: color.grayScale.text.disabled.light,
       dotColor: color.backgroundColor.disabled.light,
     },
