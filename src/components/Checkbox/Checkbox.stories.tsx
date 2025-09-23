@@ -1,4 +1,5 @@
 import Checkbox from "./Checkbox";
+import "../../styles/globals.css";
 
 export default {
   title: "Design System/Molecules/Checkbox",
@@ -8,6 +9,6 @@ export default {
 
 export const Default = {
   args: {
-    state: "deafult",
+    state: "default",
   },
 };

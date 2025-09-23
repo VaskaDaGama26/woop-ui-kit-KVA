@@ -11,6 +11,7 @@ import Plus from "./Plus";
 import Send from "./Send";
 import Star from "./Star";
 import Sun from "./Sun";
+import User from "./User";
 
 export const IconityIcons = {
   Arrow,
@@ -26,6 +27,7 @@ export const IconityIcons = {
   Star,
   Sun,
   Moon,
+  User,
 };
 
 export default IconityIcons;

@@ -4,6 +4,6 @@
   --font-family-primary: "Mulish";
 }
 
-* {
+*, html {
   font-family: var(--font-family-primary);
 }
