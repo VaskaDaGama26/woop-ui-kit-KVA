@@ -4,7 +4,7 @@ export type ToggleState =
   | "focus"
   | "disabled";
 
-export type ToggleLayout = "primary" | "boolean";
+export type ToggleLayout = "primary" | "boolean" | "theme";
 
 export interface ToggleProps {
   state?: ToggleState;

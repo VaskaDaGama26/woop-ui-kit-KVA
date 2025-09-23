@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { ToggleProps } from "./types";
 import { stateTokens } from "../../variables/components/Toggle/stateTokens";
 import Check from "../../assets/icons/Check";
 import Close from "../../assets/icons/Close";
+import Sun from "../../assets/icons/Sun";
+import Moon from "../../assets/icons/Moon";
 
 const Toggle = ({
   state = "default",
@@ -107,6 +109,22 @@ const Toggle = ({
                 style={getIconStyles(isChecked)}
               />
               <Close
+                fillPath={fillPath!}
+                width="16"
+                height="16"
+                style={getIconStyles(!isChecked)}
+              />
+            </>
+          )}
+          {layout === "theme" && (
+            <>
+              <Moon
+                fillPath={fillPath!}
+                width="16"
+                height="16"
+                style={getIconStyles(isChecked)}
+              />
+              <Sun
                 fillPath={fillPath!}
                 width="16"
                 height="16"

@@ -3,6 +3,7 @@ import type {
   ToggleLayout,
 } from "../../../components/Toggle/types";
 import color from "../../atomic/color";
+import { backgroundColor } from "../../atomic/color/background";
 import effect from "../../atomic/effect";
 
 export const stateTokens: Record<
@@ -106,6 +107,58 @@ export const stateTokens: Record<
         color: color.grayScale.white,
         boxShadow: effect.state.focusBtn,
         fillPath: color.base.error.primary.light,
+      },
+    },
+    disabled: {
+      checked: {
+        bg: color.backgroundColor.disabled.light,
+        color: color.grayScale.white,
+        fillPath: color.grayScale.text.disabled.light,
+      },
+      unchecked: {
+        bg: color.backgroundColor.disabled.light,
+        color: color.grayScale.white,
+        fillPath: color.grayScale.text.disabled.light,
+      },
+    },
+  },
+  theme: {
+    default: {
+      checked: {
+        bg: color.grayScale.divider.dark,
+        color: backgroundColor.lighten.dark,
+        fillPath: color.base.attention.primary.light,
+      },
+      unchecked: {
+        bg: color.grayScale.divider.light,
+        color: backgroundColor.lighten.light,
+        fillPath: color.base.attention.primary.light,
+      },
+    },
+    hover: {
+      checked: {
+        bg: color.grayScale.divider.dark,
+        color: backgroundColor.lighten.dark,
+        fillPath: color.base.attention.primary.light,
+      },
+      unchecked: {
+        bg: color.grayScale.divider.light,
+        color: backgroundColor.lighten.light,
+        fillPath: color.base.attention.primary.light,
+      },
+    },
+    focus: {
+      checked: {
+        bg: color.grayScale.divider.dark,
+        color: backgroundColor.lighten.dark,
+        fillPath: color.base.attention.primary.light,
+        boxShadow: effect.state.focusBtn,
+      },
+      unchecked: {
+        bg: color.grayScale.divider.light,
+        color: backgroundColor.lighten.light,
+        fillPath: color.base.attention.primary.light,
+        boxShadow: effect.state.focusBtn,
       },
     },
     disabled: {

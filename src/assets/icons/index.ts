@@ -6,9 +6,11 @@ import Delete from "./Delete";
 import Filter from "./Filter";
 import Heart from "./Heart";
 import Minus from "./Minus";
+import Moon from "./Moon";
 import Plus from "./Plus";
 import Send from "./Send";
 import Star from "./Star";
+import Sun from "./Sun";
 
 export const IconityIcons = {
   Arrow,
@@ -22,6 +24,8 @@ export const IconityIcons = {
   Plus,
   Send,
   Star,
+  Sun,
+  Moon,
 };
 
 export default IconityIcons;

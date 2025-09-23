@@ -6,17 +6,16 @@ export default {
   title: "Design System/Iconity",
   argTypes: {
     active: { control: "boolean" },
-    size: { control: "radio", options: ["L", "M", "S"] },
+    size: { control: "radio", options: ["M", "S"] },
   },
   tags: ["autodocs"],
 };
-type IconGalleryArgs = { active: boolean; size: "L" | "M" | "S" };
+type IconGalleryArgs = { active: boolean; size: "M" | "S" };
 
 export const AllIcons = ({ active, size }: IconGalleryArgs) => {
   const iconSize = {
     S: { width: "16", height: "16" },
     M: { width: "24", height: "24" },
-    L: { width: "24", height: "24" },
   }[size];
   const columnSize = size === "S" ? "42px" : "50px";
 
