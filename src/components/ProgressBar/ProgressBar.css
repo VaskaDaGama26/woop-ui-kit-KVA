@@ -1,0 +1,54 @@
+.range {
+  --circleWidth: 16px;
+  --circleHeight: 16px;
+  --circleBorder: 2px solid var(--bg-color);
+  --circleShadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--bg-color) 0%,
+    var(--bg-color) var(--progress),
+    var(--track-bg) var(--progress),
+    var(--track-bg) 100%
+  );
+  cursor: pointer;
+}
+
+/* Chrome / Safari / Edge */
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: var(--circleWidth);
+  height: var(--circleHeight);
+  border-radius: 50%;
+  background: var(--circle-bg);
+  border: var(--circleBorder);
+  box-shadow: var(--circleShadow);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.range::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+/* Firefox */
+.range::-moz-range-thumb {
+  width: var(--circleWidth);
+  height: var(--circleHeight);
+  border-radius: 50%;
+  background: var(--circle-bg);
+  border: var(--circleBorder);
+  box-shadow: var(--circleShadow);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.range::-moz-range-thumb:hover {
+  transform: scale(1.1);
+}

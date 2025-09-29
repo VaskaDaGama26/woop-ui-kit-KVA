@@ -6,6 +6,6 @@ export interface AvatarProps {
   size?: AvatarSize;
   type?: AvatarType;
   indicator?: AvatarIndicator;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   imageSrc?: string;
 }
