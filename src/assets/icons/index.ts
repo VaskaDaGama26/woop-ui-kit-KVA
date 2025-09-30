@@ -1,4 +1,5 @@
 import Arrow from "./Arrow";
+import ChevronRight from "./ChevronRight";
 import Check from "./Check";
 import Close from "./Close";
 import Comment from "./Comment";
@@ -15,6 +16,7 @@ import User from "./User";
 
 export const IconityIcons = {
   Arrow,
+  ChevronRight,
   Check,
   Close,
   Comment,
