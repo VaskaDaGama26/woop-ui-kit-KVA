@@ -1,0 +1,18 @@
+<svg width="32" height="24" viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.25" y="0.25" width="31.5" height="23.5" rx="1.75" fill="white" stroke="#F5F5F5" stroke-width="0.5"/>
+<mask id="mask0_67_3043" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="24">
+<rect x="0.25" y="0.25" width="31.5" height="23.5" rx="1.75" fill="white" stroke="white" stroke-width="0.5"/>
+</mask>
+<g mask="url(#mask0_67_3043)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 16H32V8H0V16Z" fill="#17508F"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 8.00001H32V0H0V8.00001Z" fill="#E1444D"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M6.85715 12C6.85715 11.1992 7.27754 9.38099 7.49378 8.49874C7.56601 8.20406 7.83077 8 8.13417 8H11.6765C11.9794 8 12.2438 8.2033 12.3163 8.49735C12.5328 9.37446 12.9524 11.1808 12.9524 12C12.9524 12.9082 12.3623 15.3158 12.2207 15.8803C12.2007 15.9601 12.1664 16.0339 12.1159 16.0988C11.8446 16.4476 10.8747 17.6 9.90477 17.6C8.9343 17.6 7.96384 16.4463 7.69314 16.0982C7.64295 16.0337 7.60877 15.9603 7.58873 15.8811C7.44706 15.3205 6.85715 12.9307 6.85715 12Z" fill="white"/>
+<mask id="mask1_67_3043" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="6" y="8" width="7" height="10">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M6.85715 12C6.85715 11.1992 7.27754 9.38099 7.49378 8.49874C7.56601 8.20406 7.83077 8 8.13417 8H11.6765C11.9794 8 12.2438 8.2033 12.3163 8.49735C12.5328 9.37446 12.9524 11.1808 12.9524 12C12.9524 12.9082 12.3623 15.3158 12.2207 15.8803C12.2007 15.9601 12.1664 16.0339 12.1159 16.0988C11.8446 16.4476 10.8747 17.6 9.90477 17.6C8.9343 17.6 7.96384 16.4463 7.69314 16.0982C7.64295 16.0337 7.60877 15.9603 7.58873 15.8811C7.44706 15.3205 6.85715 12.9307 6.85715 12Z" fill="white"/>
+</mask>
+<g mask="url(#mask1_67_3043)">
+<path d="M12.9524 8.8L6.85715 16.8" stroke="#E1444D" stroke-width="1.33333" stroke-linecap="square"/>
+<path d="M6.85715 8.8L12.9524 16.8" stroke="#E1444D" stroke-width="1.33333" stroke-linecap="square"/>
+</g>
+</g>
+</svg>

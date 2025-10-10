@@ -1,8 +1,8 @@
 import type { CheckboxProps } from "./types";
-import Check from "../../assets/icons/Check";
+import Check from "@assets/icons/Check";
 import { useState } from "react";
-import { stateTokens } from "../../variables/components/Checkbox/stateTokens";
-import color from "../../variables/atomic/color";
+import { stateTokens } from "@variables/components/Checkbox/stateTokens";
+import color from "@variables/atomic/color";
 
 const Checkbox = ({ state = "default", ...props }: CheckboxProps) => {
   const [checked, setChecked] = useState(false);

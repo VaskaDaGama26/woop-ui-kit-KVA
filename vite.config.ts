@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { resolve } from "path";
+import path, { resolve } from "path";
 import dts from "vite-plugin-dts";
 
 // https://vitejs.dev/config/
@@ -26,4 +26,13 @@ export default defineConfig({
       insertTypesEntry: true,
     }),
   ],
+  resolve: {
+    alias: {
+      "@context": path.resolve(__dirname, "src/context"),
+      "@variables": path.resolve(__dirname, "src/variables"),
+      "@styles": path.resolve(__dirname, "src/styles"),
+      "@assets": path.resolve(__dirname, "src/assets"),
+      "@hooks": path.resolve(__dirname, "src/hooks"),
+    },
+  },
 });

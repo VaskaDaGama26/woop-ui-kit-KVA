@@ -1,20 +1,23 @@
 import { useState } from "react";
 import type { ToggleProps } from "./types";
-import { stateTokens } from "../../variables/components/Toggle/stateTokens";
-import Check from "../../assets/icons/Check";
-import Close from "../../assets/icons/Close";
-import Sun from "../../assets/icons/Sun";
-import Moon from "../../assets/icons/Moon";
+import { stateTokens } from "@variables/components/Toggle/stateTokens";
+import Check from "@assets/icons/Check";
+import Close from "@assets/icons/Close";
+import Sun from "@assets/icons/Sun";
+import Moon from "@assets/icons/Moon";
+import { useTheme } from "@hooks/useTheme";
 
 const Toggle = ({
   state = "default",
   layout = "primary",
 }: ToggleProps) => {
+  const theme = useTheme();
   const [isChecked, setChecked] = useState(false);
   const [isActive, setActive] = useState(false);
 
   const tokens =
-    stateTokens[layout][state] || stateTokens["primary"]["default"];
+    stateTokens[theme][layout][state] ||
+    stateTokens.light.primary.default;
 
   const { bg, boxShadow, color, fillPath } = isChecked
     ? tokens.checked

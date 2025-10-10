@@ -1,7 +1,7 @@
-import Arrow from "../../assets/icons/Arrow";
-import Plus from "../../assets/icons/Plus";
-import { borderRadius } from "../../variables/atomic/borderRadius";
-import ButtonTokens from "../../variables/components/Button/index";
+import Arrow from "@assets/icons/Arrow";
+import Plus from "@assets/icons/Plus";
+import { borderRadius } from "@variables/atomic/borderRadius";
+import ButtonTokens from "@variables/components/Button/index";
 import type { ButtonProps } from "./types";
 
 const Button = ({

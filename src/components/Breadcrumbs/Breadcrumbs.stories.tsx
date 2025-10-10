@@ -1,5 +1,5 @@
 import Breadcrumbs from "./Breadcrumbs";
-import "../../styles/globals.css";
+import "@styles/globals.css";
 import type { BreadcrumbItem } from "./types";
 
 export default {

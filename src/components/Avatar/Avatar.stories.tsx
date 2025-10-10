@@ -1,5 +1,5 @@
 import Avatar from "./Avatar";
-import "../../styles/globals.css";
+import "@styles/globals.css";
 import type {
   AvatarIndicator,
   AvatarSize,

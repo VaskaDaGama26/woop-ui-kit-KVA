@@ -1,5 +1,5 @@
 import type { BadgeProps } from "./types";
-import BadgeTokens from "../../variables/components/Badge/index";
+import BadgeTokens from "@variables/components/Badge/index";
 
 const { sizeTokens, stateTokens } = BadgeTokens;
 

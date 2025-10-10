@@ -1,6 +1,6 @@
 import Badge from "./Badge";
 import type { BadgeSize, BadgeState } from "./types";
-import "../../styles/globals.css";
+import "@styles/globals.css";
 
 const sizes: BadgeSize[] = ["M", "S"];
 const states: BadgeState[] = [

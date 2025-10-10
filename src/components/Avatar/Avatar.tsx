@@ -1,7 +1,7 @@
 import type { AvatarProps } from "./types";
-import AvatarTokens from "../../variables/components/Avatar/index";
-import User from "../../assets/icons/User";
-import Plus from "../../assets/icons/Plus";
+import AvatarTokens from "@variables/components/Avatar/index";
+import User from "@assets/icons/User";
+import Plus from "@assets/icons/Plus";
 
 const Avatar = ({
   type = "empty",

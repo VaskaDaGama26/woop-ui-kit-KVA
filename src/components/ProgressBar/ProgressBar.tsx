@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import "./ProgressBar.css";
 import type { ProgressBarProps } from "./types";
-import { stateTokens } from "../../variables/components/ProgressBar/stateTokens";
+import { stateTokens } from "@variables/components/ProgressBar/stateTokens";
 
 const ProgressBar = ({
   min = 0,
   max = 100,
   step = 1,
   state = "hover",
-  layout = "level",
 }: ProgressBarProps) => {
   const [value, setValue] = useState((min + max) / 2);
   const percent = max > min ? ((value - min) / (max - min)) * 100 : 0;

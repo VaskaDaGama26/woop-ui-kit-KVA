@@ -1,7 +1,7 @@
-import ChevronRight from "../../assets/icons/ChevronRight";
+import ChevronRight from "@assets/icons/ChevronRight";
 import "./Breadcrumbs.css";
 import type { BreadcrumbsProps } from "./types";
-import { stateTokens } from "../../variables/components/Breadcrumbs/stateTokens";
+import { stateTokens } from "@variables/components/Breadcrumbs/stateTokens";
 
 export const Breadcrumbs = ({
   items,

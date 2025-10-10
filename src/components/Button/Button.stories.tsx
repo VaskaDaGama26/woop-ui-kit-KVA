@@ -1,5 +1,5 @@
 import Button from "./Button";
-import "../../styles/globals.css";
+import "@styles/globals.css";
 import type {
   ButtonSize,
   ButtonLayout,
@@ -7,9 +7,9 @@ import type {
   ButtonIcon,
   ButtonCategory,
 } from "./types";
-import Heart from "../../assets/icons/Heart";
-import iconityIcons from "../../assets/icons/index";
-import type { IconName } from "../../assets/icons/index";
+import Heart from "@assets/icons/Heart";
+import iconityIcons from "@assets/icons/index";
+import type { IconName } from "@assets/icons/index";
 
 const sizes: ButtonSize[] = ["S", "M", "L"];
 const layouts: ButtonLayout[] = ["primary", "secondary", "tertiary"];

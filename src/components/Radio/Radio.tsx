@@ -1,6 +1,6 @@
 // import { useState } from "react";
 // import type { RadioProps } from "./types";
-// import { stateTokens } from "../../variables/components/Radio/stateTokens";
+// import { stateTokens } from "@variables/components/Radio/stateTokens";
 
 // const Radio = ({
 //   state = "default",
@@ -76,7 +76,7 @@
 
 import { useState } from "react";
 import type { RadioProps, RadioState } from "./types";
-import { stateTokens } from "../../variables/components/Radio/stateTokens";
+import { stateTokens } from "@variables/components/Radio/stateTokens";
 
 const Radio = ({
   state = "default",

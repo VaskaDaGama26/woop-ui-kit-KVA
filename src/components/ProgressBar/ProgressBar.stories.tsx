@@ -1,5 +1,5 @@
 import ProgressBar from "./ProgressBar";
-import "../../styles/globals.css";
+import "@styles/globals.css";
 import type { ProgressBarProps, ProgressBarState } from "./types";
 
 export default {

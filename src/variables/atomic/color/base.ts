@@ -9,7 +9,7 @@ export const base = {
     primary: { light: "#F6D523", dark: "#F9DE51" },
     secondary: { light: "#FFEF98", dark: "#EFE29B" },
     tertiary: { light: "#FFFAE1", dark: "#F9F1C7" },
-    hover: { light: "#F6D523", dark: "#EFD02C" },
+    hover: { light: "#EECD1D", dark: "#EFD02C" },
   },
   error: {
     primary: { light: "#FF3030", dark: "#FF4545" },

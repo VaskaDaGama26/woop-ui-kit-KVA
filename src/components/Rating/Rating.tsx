@@ -1,9 +1,11 @@
 import { useState } from "react";
-import Star from "../../assets/icons/Star";
+import Star from "@assets/icons/Star";
 import type { RatingProps } from "./types";
-import { stateTokens } from "../../variables/components/Rating/stateTokens";
+import { stateTokens } from "@variables/components/Rating/stateTokens";
+import { useTheme } from "@hooks/useTheme";
 
 const Rating = ({ count, size = 16 }: RatingProps) => {
+  const theme = useTheme();
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
   const starsCount = Math.max(0, Math.min(5, count));
 
@@ -21,17 +23,17 @@ const Rating = ({ count, size = 16 }: RatingProps) => {
             key={index}
             fillPath={
               isHover
-                ? stateTokens.hover
+                ? stateTokens[theme].hover
                 : isFilled
-                ? stateTokens.active
-                : stateTokens.inactive
+                ? stateTokens[theme].active
+                : stateTokens[theme].inactive
             }
             fillIcon={
               isHover
-                ? stateTokens.hover
+                ? stateTokens[theme].hover
                 : isFilled
-                ? stateTokens.active
-                : stateTokens.inactive
+                ? stateTokens[theme].active
+                : stateTokens[theme].inactive
             }
             width={`${size}`}
             height={`${size}`}
