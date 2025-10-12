@@ -1,7 +1,7 @@
 import type { AvatarProps } from "./types";
 import AvatarTokens from "@variables/components/Avatar/index";
-import User from "@assets/icons/User";
-import Plus from "@assets/icons/Plus";
+import { User, Plus } from "@assets/icons";
+import { useTheme } from "@hooks/useTheme";
 
 const Avatar = ({
   type = "empty",
@@ -10,9 +10,10 @@ const Avatar = ({
   children = "LZ",
   imageSrc = "src/components/Avatar/TestAvatar.svg",
 }: AvatarProps) => {
+  const theme = useTheme();
   const { sizeTokens, stateTokens } = AvatarTokens;
 
-  const { bg, color } = stateTokens[type];
+  const { bg, color } = stateTokens[theme][type];
   const {
     sizes,
     typography,

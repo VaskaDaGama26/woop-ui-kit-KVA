@@ -1,4 +1,7 @@
-import type { ToggleState } from "../../../components/Toggle/types";
+import type {
+  ToggleLayout,
+  ToggleState,
+} from "@components/Toggle/types";
 
 export type TokenValues = {
   checked: {
@@ -15,4 +18,7 @@ export type TokenValues = {
   };
 };
 
-export type LayoutTokens = Record<ToggleState, TokenValues>;
+export type LayoutTokens = Record<
+  ToggleLayout,
+  Record<ToggleState, TokenValues>
+>;

@@ -1,3 +1,4 @@
+import { withThemeProvider } from "@context/theme/ThemeDecorator";
 import Badge from "./Badge";
 import type { BadgeSize, BadgeState } from "./types";
 import "@styles/globals.css";
@@ -15,6 +16,7 @@ export default {
   title: "Design System/Molecules/Badge",
   component: Badge,
   tags: ["autodocs"],
+  decorators: [withThemeProvider],
   argTypes: {
     children: {
       control: { type: false },

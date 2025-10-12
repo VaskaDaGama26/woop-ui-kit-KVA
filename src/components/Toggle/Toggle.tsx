@@ -1,27 +1,32 @@
-import { useState } from "react";
-import type { ToggleProps } from "./types";
+import { useState, useEffect } from "react";
+import type { ToggleProps, ToggleState } from "./types";
 import { stateTokens } from "@variables/components/Toggle/stateTokens";
-import Check from "@assets/icons/Check";
-import Close from "@assets/icons/Close";
-import Sun from "@assets/icons/Sun";
-import Moon from "@assets/icons/Moon";
+import { Check, Close, Sun, Moon } from "@assets/icons";
 import { useTheme } from "@hooks/useTheme";
 
 const Toggle = ({
-  state = "default",
+  state: externalState,
   layout = "primary",
-}: ToggleProps) => {
+}: ToggleProps & { state?: ToggleState }) => {
   const theme = useTheme();
   const [isChecked, setChecked] = useState(false);
-  const [isActive, setActive] = useState(false);
+  const [internalState, setInternalState] = useState<ToggleState>(
+    externalState || "default"
+  );
+
+  useEffect(() => {
+    if (externalState) setInternalState(externalState);
+  }, [externalState]);
 
   const tokens =
-    stateTokens[theme][layout][state] ||
+    stateTokens[theme][layout][internalState] ||
     stateTokens.light.primary.default;
 
   const { bg, boxShadow, color, fillPath } = isChecked
     ? tokens.checked
     : tokens.unchecked;
+
+  const isDisabled = internalState === "disabled";
 
   const getIconStyles = (visible: boolean): React.CSSProperties => ({
     position: "absolute",
@@ -47,56 +52,63 @@ const Toggle = ({
     justifyContent: "center",
     transition: "transform 0.15s, box-shadow 0.1s",
     transform: isChecked ? "translateX(28px)" : "translateX(0)",
-    boxShadow:
-      state !== "disabled" && isActive
-        ? "inset 0 0 2px rgba(0, 0, 0, 0.3)"
-        : "none",
+    boxShadow: "none",
     willChange: "transform, box-shadow",
+  };
+
+  const handleMouseEnter = () => {
+    if (!externalState && !isDisabled) setInternalState("hover");
+  };
+  const handleMouseLeave = () => {
+    if (!externalState && !isDisabled) setInternalState("default");
+  };
+  const handleFocus = () => {
+    if (!externalState && !isDisabled) setInternalState("focus");
+  };
+  const handleBlur = () => {
+    if (!externalState && !isDisabled) setInternalState("default");
   };
 
   return (
     <label
-      onMouseDown={() => setActive(true)}
-      onMouseUp={() => setActive(false)}
-      onMouseLeave={() => setActive(false)}
       style={{
         display: "inline-block",
         height: "32px",
         lineHeight: "32px",
-        marginRight: "10px",
         position: "relative",
         verticalAlign: "middle",
         fontSize: "14px",
         userSelect: "none",
-        cursor: state === "disabled" ? "not-allowed" : "pointer",
+        cursor: isDisabled ? "not-allowed" : "pointer",
+        marginRight: "10px",
       }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <input
-        style={{
-          display: "block",
-          width: 0,
-          height: 0,
-          position: "absolute",
-          zIndex: -1,
-          opacity: 0,
-        }}
         type="checkbox"
         checked={isChecked}
         onChange={() => setChecked(!isChecked)}
-        disabled={state === "disabled"}
+        disabled={isDisabled}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        style={{
+          position: "absolute",
+          width: 0,
+          height: 0,
+          opacity: 0,
+          zIndex: -1,
+        }}
       />
       <span
         style={{
           position: "relative",
-          display: " inline-block",
+          display: "inline-block",
           boxSizing: "border-box",
           width: "60px",
           height: "32px",
-          border: "none",
           borderRadius: "25%/50%",
-          verticalAlign: "top",
           transition: "0.2s",
-
           backgroundColor: bg,
           boxShadow: boxShadow,
           color: color,

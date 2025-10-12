@@ -1,14 +1,10 @@
-import type { ToggleLayout } from "../../../components/Toggle/types";
-import type { ThemeMode } from "@context/theme/ThemeContext";
-import color from "../../atomic/color";
-import { backgroundColor } from "../../atomic/color/background";
-import effect from "../../atomic/effect";
+import color from "@variables/atomic/color";
+import { backgroundColor } from "@variables/atomic/color/background";
+import effect from "@variables/atomic/effect";
 import type { LayoutTokens } from "./types";
+import type { ThemeMode } from "@context/theme/types";
 
-export const stateTokens: Record<
-  ThemeMode,
-  Record<ToggleLayout, LayoutTokens>
-> = {
+export const stateTokens: Record<ThemeMode, LayoutTokens> = {
   light: {
     primary: {
       default: {

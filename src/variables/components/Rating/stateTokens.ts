@@ -1,5 +1,5 @@
-import type { ThemeMode } from "@context/theme/ThemeContext";
-import color from "../../atomic/color";
+import type { ThemeMode } from "@context/theme/types";
+import color from "@variables/atomic/color";
 import type { RatingState } from "./types";
 
 export const stateTokens: Record<ThemeMode, RatingState> = {

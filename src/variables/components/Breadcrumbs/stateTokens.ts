@@ -1,5 +1,5 @@
-import color from "../../atomic/color";
-import { textStyles } from "../../atomic/textStyles";
+import color from "@variables/atomic/color";
+import { textStyles } from "@variables/atomic/textStyles";
 
 export const stateTokens = {
   notLast: {

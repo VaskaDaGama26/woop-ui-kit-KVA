@@ -7,4 +7,5 @@ export type CheckboxState =
 
 export interface CheckboxProps {
   state?: CheckboxState;
+  value: string;
 }

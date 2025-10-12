@@ -1,3 +1,4 @@
+import { useTheme } from "@hooks/useTheme";
 import type { BadgeProps } from "./types";
 import BadgeTokens from "@variables/components/Badge/index";
 
@@ -8,12 +9,13 @@ const Badge = ({
   state = "default",
   children = "Badge",
 }: BadgeProps) => {
+  const theme = useTheme();
   const {
     bg,
     color: textColor,
     boxShadow,
     border = 0,
-  } = stateTokens[state];
+  } = stateTokens[theme][state];
 
   const { padding, typography } = sizeTokens[size];
 

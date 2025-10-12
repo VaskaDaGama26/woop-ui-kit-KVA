@@ -1,11 +1,13 @@
 import ProgressBar from "./ProgressBar";
 import "@styles/globals.css";
 import type { ProgressBarProps, ProgressBarState } from "./types";
+import { withThemeProvider } from "@context/theme/ThemeDecorator";
 
 export default {
   title: "Design System/Molecules/ProgressBar",
   component: ProgressBar,
   tags: ["autodocs"],
+  decorators: [withThemeProvider],
 };
 
 const states: ProgressBarState[] = ["default", "hover", "active"];

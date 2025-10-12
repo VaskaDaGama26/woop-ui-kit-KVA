@@ -1,8 +1,8 @@
-import Arrow from "@assets/icons/Arrow";
-import Plus from "@assets/icons/Plus";
+import { Arrow, Plus } from "@assets/icons";
 import { borderRadius } from "@variables/atomic/borderRadius";
-import ButtonTokens from "@variables/components/Button/index";
+import { ButtonTokens } from "@variables/components";
 import type { ButtonProps } from "./types";
+import { useTheme } from "@hooks/useTheme";
 
 const Button = ({
   size = "M",
@@ -14,6 +14,7 @@ const Button = ({
   children,
   ...props
 }: ButtonProps) => {
+  const theme = useTheme();
   const appliedIcon = category === "icon" ? "none" : icon;
   const appliedChildren = category === "icon" ? undefined : children;
 
@@ -28,7 +29,7 @@ const Button = ({
     color: textColor,
     boxShadow,
     border = 0,
-  } = stateTokens[layout][state];
+  } = stateTokens[theme][layout][state];
 
   return (
     <button

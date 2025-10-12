@@ -1,15 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Radio from "./Radio";
 import "@styles/globals.css";
+import { withThemeProvider } from "@context/theme/ThemeDecorator";
 
 export default {
   title: "Design System/Molecules/Radio",
   component: Radio,
   tags: ["autodocs"],
   argTypes: {
-    selectedValue: { control: "text" },
+    state: {
+      control: "radio",
+      options: ["default", "hover", "focus", "click", "disabled"],
+    },
     onChange: { action: "changed" },
   },
+  decorators: [withThemeProvider],
 };
 
 export const Default = {
@@ -17,6 +22,12 @@ export const Default = {
     const [selected, setSelected] = useState<string | null>(
       args.selectedValue || null
     );
+
+    useEffect(() => {
+      if (args.selectedValue !== selected) {
+        setSelected(args.selectedValue);
+      }
+    }, [args.selectedValue]);
 
     return (
       <Radio
@@ -33,6 +44,7 @@ export const Default = {
     value: "1",
     name: "test",
     state: "default",
+    selectedValue: null,
   },
 };
 
@@ -40,9 +52,7 @@ export const ThreeDots = () => {
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
-    <div
-      style={{ display: "flex", flexDirection: "column", gap: "6px" }}
-    >
+    <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
       {["1", "2", "3"].map((val) => (
         <Radio
           key={val}

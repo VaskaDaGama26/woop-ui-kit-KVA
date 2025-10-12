@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Star from "@assets/icons/Star";
+import { Star } from "@assets/icons";
 import type { RatingProps } from "./types";
 import { stateTokens } from "@variables/components/Rating/stateTokens";
 import { useTheme } from "@hooks/useTheme";

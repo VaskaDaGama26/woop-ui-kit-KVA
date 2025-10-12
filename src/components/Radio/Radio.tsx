@@ -1,82 +1,7 @@
-// import { useState } from "react";
-// import type { RadioProps } from "./types";
-// import { stateTokens } from "@variables/components/Radio/stateTokens";
-
-// const Radio = ({
-//   state = "default",
-//   value,
-//   name,
-//   ...props
-// }: RadioProps) => {
-//   const [isSelected, setSelected] = useState<string | null>(null);
-
-//   const tokens = stateTokens[state] || stateTokens["default"];
-//   const { bg, border, boxShadow } =
-//     isSelected === value ? tokens.checked : tokens.unchecked;
-
-//   const dotColor =
-//     isSelected === value ? tokens.checked.dotColor : undefined;
-
-//   return (
-//     <label
-//       style={{
-//         display: "inline-flex",
-//         alignItems: "center",
-//         cursor: state === "disabled" ? "not-allowed" : "pointer",
-//         position: "relative",
-//       }}
-//     >
-//       <input
-//         type="radio"
-//         name={name}
-//         value={value}
-//         checked={isSelected === value}
-//         onChange={(e) => setSelected(e.target.value)}
-//         disabled={state === "disabled"}
-//         style={{
-//           position: "absolute",
-//           opacity: 0,
-//           width: 0,
-//           height: 0,
-//         }}
-//         {...props}
-//       />
-
-//       <span
-//         style={{
-//           display: "inline-flex",
-//           justifyContent: "center",
-//           alignItems: "center",
-//           width: 16,
-//           height: 16,
-//           padding: 2,
-//           borderRadius: "50%",
-//           border: `2px solid ${border}`,
-//           backgroundColor: bg,
-//           boxShadow,
-//           transition: "all 0.2s ease",
-//         }}
-//       >
-//         {isSelected === value && (
-//           <span
-//             style={{
-//               width: 12,
-//               height: 12,
-//               borderRadius: "50%",
-//               backgroundColor: dotColor,
-//             }}
-//           />
-//         )}
-//       </span>
-//     </label>
-//   );
-// };
-
-// export default Radio;
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { RadioProps, RadioState } from "./types";
 import { stateTokens } from "@variables/components/Radio/stateTokens";
+import { useTheme } from "@hooks/useTheme";
 
 const Radio = ({
   state = "default",
@@ -86,26 +11,79 @@ const Radio = ({
   onChange,
   ...props
 }: RadioProps) => {
-  const [currentState, setCurrentState] = useState<RadioState>(state);
+  const theme = useTheme();
+  const [internalState, setInternalState] =
+    useState<RadioState>(state);
+  const [isKeyboardFocus, setIsKeyboardFocus] = useState(false);
+  const [isUsingKeyboard, setIsUsingKeyboard] = useState(false);
 
-  const tokens = stateTokens[currentState] || stateTokens["default"];
+  const isDisabled = state === "disabled";
+
+  useEffect(() => {
+    const handleKeyDown = () => setIsUsingKeyboard(true);
+    const handleMouseDown = () => setIsUsingKeyboard(false);
+
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("mousedown", handleMouseDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("mousedown", handleMouseDown);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (state !== internalState) setInternalState(state);
+  }, [state]);
+
+  const handleFocus = () => {
+    if (!isDisabled) {
+      setInternalState("focus");
+      setIsKeyboardFocus(isUsingKeyboard);
+    }
+  };
+  const handleBlur = () => {
+    if (!isDisabled) {
+      setInternalState("default");
+      setIsKeyboardFocus(false);
+    }
+  };
+  const handleMouseEnter = () => {
+    if (!isDisabled && internalState !== "focus")
+      setInternalState("hover");
+  };
+  const handleMouseLeave = () => {
+    if (!isDisabled && internalState !== "focus")
+      setInternalState("default");
+  };
+  const handleMouseDown = () => {
+    if (!isDisabled) setInternalState("click");
+  };
+  const handleMouseUp = () => {
+    if (!isDisabled && internalState !== "focus")
+      setInternalState("hover");
+  };
+
+  const tokens =
+    stateTokens[theme][internalState] || stateTokens.light.default;
   const { bg, border, boxShadow } =
     selectedValue === value ? tokens.checked : tokens.unchecked;
   const dotColor =
     selectedValue === value ? tokens.checked.dotColor : undefined;
+  const visualBoxShadow =
+    state === "focus" ||
+    (internalState === "focus" && isKeyboardFocus)
+      ? boxShadow
+      : undefined;
 
   return (
     <label
-      onMouseEnter={() =>
-        state !== "disabled" && setCurrentState("hover")
-      }
-      onMouseLeave={() =>
-        state !== "disabled" && setCurrentState("default")
-      }
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       style={{
         display: "inline-flex",
+        width: "fit-content",
         alignItems: "center",
-        cursor: state === "disabled" ? "not-allowed" : "pointer",
+        cursor: isDisabled ? "not-allowed" : "pointer",
         position: "relative",
       }}
     >
@@ -115,19 +93,11 @@ const Radio = ({
         value={value}
         checked={selectedValue === value}
         onChange={() => onChange(value)}
-        disabled={state === "disabled"}
-        onFocus={() =>
-          state !== "disabled" && setCurrentState("focus")
-        }
-        onBlur={() =>
-          state !== "disabled" && setCurrentState("default")
-        }
-        onMouseDown={() =>
-          state !== "disabled" && setCurrentState("click")
-        }
-        onMouseUp={() =>
-          state !== "disabled" && setCurrentState("hover")
-        }
+        disabled={isDisabled}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
         style={{
           position: "absolute",
           opacity: 0,
@@ -148,7 +118,7 @@ const Radio = ({
           borderRadius: "50%",
           border: `2px solid ${border}`,
           backgroundColor: bg,
-          boxShadow,
+          boxShadow: visualBoxShadow,
           transition: "all 0.2s ease",
         }}
       >
@@ -166,4 +136,5 @@ const Radio = ({
     </label>
   );
 };
+
 export default Radio;

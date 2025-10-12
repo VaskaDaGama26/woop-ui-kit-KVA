@@ -7,9 +7,9 @@ import type {
   ButtonIcon,
   ButtonCategory,
 } from "./types";
-import Heart from "@assets/icons/Heart";
-import iconityIcons from "@assets/icons/index";
+import { IconityIcons } from "@assets/icons/index";
 import type { IconName } from "@assets/icons/index";
+import { withThemeProvider } from "@context/theme/ThemeDecorator";
 
 const sizes: ButtonSize[] = ["S", "M", "L"];
 const layouts: ButtonLayout[] = ["primary", "secondary", "tertiary"];
@@ -27,10 +27,11 @@ const categories: ButtonCategory[] = ["standart", "icon"];
 export default {
   title: "Design System/Molecules/Button",
   component: Button,
+  decorators: [withThemeProvider],
   argTypes: {
     customIconName: {
       control: { type: "select" },
-      options: Object.keys(iconityIcons),
+      options: Object.keys(IconityIcons),
     },
     customIcon: {
       control: { type: false },
@@ -55,7 +56,7 @@ type ButtonStoryArgs = {
 export const Default = (args: ButtonStoryArgs) => {
   const { customIconName, ...rest } = args;
   const CustomIcon = customIconName
-    ? iconityIcons[customIconName]
+    ? IconityIcons[customIconName]
     : undefined;
 
   return <Button {...rest} customIcon={CustomIcon} />;
@@ -129,7 +130,7 @@ export const AllButtons = () => (
                               key={`${size}-${layout}-${state}-${icon}`}
                               customIcon={
                                 category === "icon"
-                                  ? Heart
+                                  ? IconityIcons.Heart
                                   : undefined
                               }
                             >

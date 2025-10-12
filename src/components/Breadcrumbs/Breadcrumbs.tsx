@@ -1,4 +1,4 @@
-import ChevronRight from "@assets/icons/ChevronRight";
+import { ChevronRight } from "@assets/icons";
 import "./Breadcrumbs.css";
 import type { BreadcrumbsProps } from "./types";
 import { stateTokens } from "@variables/components/Breadcrumbs/stateTokens";

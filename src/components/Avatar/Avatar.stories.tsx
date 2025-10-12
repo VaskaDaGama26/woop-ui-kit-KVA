@@ -5,6 +5,7 @@ import type {
   AvatarSize,
   AvatarType,
 } from "./types";
+import { withThemeProvider } from "@context/theme/ThemeDecorator";
 
 const types: AvatarType[] = ["photo", "initials", "empty", "add"];
 const sizes: AvatarSize[] = ["XL", "L", "M", "S"];
@@ -14,6 +15,7 @@ export default {
   title: "Design System/Molecules/Avatar",
   component: Avatar,
   tags: ["autodocs"],
+  decorators: [withThemeProvider],
 };
 
 export const Default = {
@@ -42,11 +44,7 @@ export const AllAvatars = () => (
               }}
             >
               {indicators.map((indicator) => (
-                <Avatar
-                  size={size}
-                  type={type}
-                  indicator={indicator}
-                >
+                <Avatar size={size} type={type} indicator={indicator}>
                   VK
                 </Avatar>
               ))}
