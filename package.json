@@ -1,18 +1,34 @@
 {
-  "name": "woop-ui-kit-kva",
+  "name": "woop-ui-kit",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.9",
   "type": "module",
-  "files": [
-    "dist"
+  "keywords": [
+    "ui-kit",
+    "react",
+    "design-system",
+    "storybook",
+    "typescript",
+    "ui-components",
+    "react-components",
+    "theme",
+    "button",
+    "input",
+    "form",
+    "icon",
+    "npm-package"
   ],
-  "main": "./dist/woop-ui-kit-kva.umd.js",
-  "module": "./dist/woop-ui-kit-kva.es.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "main": "./dist/woop-ui-kit.umd.js",
+  "module": "./dist/woop-ui-kit.es.js",
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "types": "./dist/woop-ui-kit-kva.es.d.ts",
-      "import": "./dist/woop-ui-kit-kva.es.js"
+      "types": "./dist/woop-ui-kit.es.d.ts",
+      "import": "./dist/woop-ui-kit.es.js"
     }
   },
   "scripts": {

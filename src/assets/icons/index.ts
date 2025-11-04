@@ -48,9 +48,6 @@ export const IconityIcons = {
   Sun,
   Moon,
   User,
-
-  Social,
-  Flag,
 };
 export default IconityIcons;
 

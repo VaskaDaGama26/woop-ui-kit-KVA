@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": "src",
+    "composite": true,
     "paths": {
       "@context/*": ["context/*"],
       "@variables/*": ["variables/*"],
