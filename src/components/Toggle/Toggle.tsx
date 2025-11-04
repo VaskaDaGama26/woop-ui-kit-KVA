@@ -13,10 +13,26 @@ const Toggle = ({
   const [internalState, setInternalState] = useState<ToggleState>(
     externalState || "default"
   );
+  const [isKeyboardFocus, setIsKeyboardFocus] = useState(false);
 
   useEffect(() => {
     if (externalState) setInternalState(externalState);
   }, [externalState]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Tab") setIsKeyboardFocus(true);
+    };
+    const handleMouseDown = () => setIsKeyboardFocus(false);
+
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("mousedown", handleMouseDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("mousedown", handleMouseDown);
+    };
+  }, []);
 
   const tokens =
     stateTokens[theme][layout][internalState] ||
@@ -63,7 +79,9 @@ const Toggle = ({
     if (!externalState && !isDisabled) setInternalState("default");
   };
   const handleFocus = () => {
-    if (!externalState && !isDisabled) setInternalState("focus");
+    if (!externalState && !isDisabled && isKeyboardFocus) {
+      setInternalState("focus");
+    }
   };
   const handleBlur = () => {
     if (!externalState && !isDisabled) setInternalState("default");
