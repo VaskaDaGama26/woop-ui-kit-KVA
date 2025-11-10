@@ -8,8 +8,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
-      name: "woop-ui-kit-kva",
-      fileName: (format) => `woop-ui-kit-kva.${format}.js`,
+      name: "woop-ui-kit",
+      fileName: (format) => `woop-ui-kit.${format}.js`,
     },
     rollupOptions: {
       external: ["react"],
