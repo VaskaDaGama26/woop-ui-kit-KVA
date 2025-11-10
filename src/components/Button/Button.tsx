@@ -1,12 +1,13 @@
 import { Arrow, Plus } from "@assets/icons";
 import { borderRadius } from "@variables/atomic/borderRadius";
 import { ButtonTokens } from "@variables/components";
-import type { ButtonProps } from "./types";
+import type { ButtonProps, ButtonState } from "./types";
 import { useTheme } from "@hooks/useTheme";
+import { useState } from "react";
 
 const Button = ({
   size = "M",
-  state = "default",
+  state: externalState,
   layout = "primary",
   icon = "none",
   category = "standart",
@@ -24,12 +25,19 @@ const Button = ({
     category === "icon" ? iconSizeTokens : standartSizeTokens;
   const { padding, typography, icon: iconSize } = tokens[size];
 
+  const [internalState, setInternalState] =
+    useState<ButtonState>("default");
+
+  const effectiveState: ButtonState = externalState ?? internalState;
+
   const {
     bg,
     color: textColor,
     boxShadow,
     border = 0,
-  } = stateTokens[theme][layout][state];
+  } = stateTokens[theme][layout][effectiveState];
+
+  const isControlled = externalState !== undefined;
 
   return (
     <button
@@ -46,10 +54,18 @@ const Button = ({
         gap: "8px",
         alignItems: "center",
         justifyContent: "center",
-        cursor: state === "disabled" ? "not-allowed" : "pointer",
+        cursor: effectiveState === "disabled" ? "not-allowed" : "pointer",
       }}
+      disabled={effectiveState === "disabled"}
+      {...(!isControlled && {
+        onMouseEnter: () => setInternalState("hover"),
+        onMouseLeave: () => setInternalState("default"),
+        onFocus: () => setInternalState("focus"),
+        onBlur: () => setInternalState("default"),
+        onMouseDown: () => setInternalState("click"),
+        onMouseUp: () => setInternalState("hover"),
+      })}
       {...props}
-      disabled={state === "disabled"}
     >
       {appliedIcon === "left" && (
         <Plus
@@ -60,7 +76,7 @@ const Button = ({
       )}
       {category === "icon" && CustomIcon && (
         <CustomIcon
-          fillIcon={state === "active" ? textColor : undefined}
+          fillIcon={effectiveState === "active" ? textColor : undefined}
           fillPath={textColor}
           width={`${iconSize.width}`}
           height={`${iconSize.height}`}
